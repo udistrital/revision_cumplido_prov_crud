@@ -1,0 +1,707 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /cambio_estado_cumplido/:
+    get:
+      tags:
+      - cambio_estado_cumplido
+      description: get CambioEstadoCumplido
+      operationId: CambioEstadoCumplidoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CambioEstadoCumplido'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - cambio_estado_cumplido
+      description: create CambioEstadoCumplido
+      operationId: CambioEstadoCumplidoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for CambioEstadoCumplido content
+        required: true
+        schema:
+          $ref: '#/definitions/models.CambioEstadoCumplido'
+      responses:
+        "201":
+          description: '{int} models.CambioEstadoCumplido'
+        "400":
+          description: the request contains incorrect syntax
+  /cambio_estado_cumplido/{id}:
+    get:
+      tags:
+      - cambio_estado_cumplido
+      description: get CambioEstadoCumplido by id
+      operationId: CambioEstadoCumplidoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CambioEstadoCumplido'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - cambio_estado_cumplido
+      description: update the CambioEstadoCumplido
+      operationId: CambioEstadoCumplidoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for CambioEstadoCumplido content
+        required: true
+        schema:
+          $ref: '#/definitions/models.CambioEstadoCumplido'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CambioEstadoCumplido'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - cambio_estado_cumplido
+      description: delete the CambioEstadoCumplido
+      operationId: CambioEstadoCumplidoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /comentario_soporte/:
+    get:
+      tags:
+      - comentario_soporte
+      description: get ComentarioSoporte
+      operationId: ComentarioSoporteController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ComentarioSoporte'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - comentario_soporte
+      description: create ComentarioSoporte
+      operationId: ComentarioSoporteController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ComentarioSoporte content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ComentarioSoporte'
+      responses:
+        "201":
+          description: '{int} models.ComentarioSoporte'
+        "400":
+          description: the request contains incorrect syntax
+  /comentario_soporte/{id}:
+    get:
+      tags:
+      - comentario_soporte
+      description: get ComentarioSoporte by id
+      operationId: ComentarioSoporteController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ComentarioSoporte'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - comentario_soporte
+      description: update the ComentarioSoporte
+      operationId: ComentarioSoporteController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ComentarioSoporte content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ComentarioSoporte'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ComentarioSoporte'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - comentario_soporte
+      description: delete the ComentarioSoporte
+      operationId: ComentarioSoporteController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /cumplido_proveedor/:
+    get:
+      tags:
+      - cumplido_proveedor
+      description: get CumplidoProveedor
+      operationId: CumplidoProveedorController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CumplidoProveedor'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - cumplido_proveedor
+      description: create CumplidoProveedor
+      operationId: CumplidoProveedorController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for CumplidoProveedor content
+        required: true
+        schema:
+          $ref: '#/definitions/models.CumplidoProveedor'
+      responses:
+        "201":
+          description: '{int} models.CumplidoProveedor'
+        "400":
+          description: the request contains incorrect syntax
+  /cumplido_proveedor/{id}:
+    get:
+      tags:
+      - cumplido_proveedor
+      description: get CumplidoProveedor by id
+      operationId: CumplidoProveedorController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CumplidoProveedor'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - cumplido_proveedor
+      description: update the CumplidoProveedor
+      operationId: CumplidoProveedorController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for CumplidoProveedor content
+        required: true
+        schema:
+          $ref: '#/definitions/models.CumplidoProveedor'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CumplidoProveedor'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - cumplido_proveedor
+      description: delete the CumplidoProveedor
+      operationId: CumplidoProveedorController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /estado_soporte/:
+    get:
+      tags:
+      - estado_soporte
+      description: get EstadoSoporte
+      operationId: EstadoSoporteController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoSoporte'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - estado_soporte
+      description: create EstadoSoporte
+      operationId: EstadoSoporteController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for EstadoSoporte content
+        required: true
+        schema:
+          $ref: '#/definitions/models.EstadoSoporte'
+      responses:
+        "201":
+          description: '{int} models.EstadoSoporte'
+        "400":
+          description: the request contains incorrect syntax
+  /estado_soporte/{id}:
+    get:
+      tags:
+      - estado_soporte
+      description: get EstadoSoporte by id
+      operationId: EstadoSoporteController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoSoporte'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - estado_soporte
+      description: update the EstadoSoporte
+      operationId: EstadoSoporteController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for EstadoSoporte content
+        required: true
+        schema:
+          $ref: '#/definitions/models.EstadoSoporte'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoSoporte'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - estado_soporte
+      description: delete the EstadoSoporte
+      operationId: EstadoSoporteController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /soporte_pago/:
+    get:
+      tags:
+      - soporte_pago
+      description: get SoportePago
+      operationId: SoportePagoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.SoportePago'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - soporte_pago
+      description: create SoportePago
+      operationId: SoportePagoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for SoportePago content
+        required: true
+        schema:
+          $ref: '#/definitions/models.SoportePago'
+      responses:
+        "201":
+          description: '{int} models.SoportePago'
+        "400":
+          description: the request contains incorrect syntax
+  /soporte_pago/{id}:
+    get:
+      tags:
+      - soporte_pago
+      description: get SoportePago by id
+      operationId: SoportePagoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.SoportePago'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - soporte_pago
+      description: update the SoportePago
+      operationId: SoportePagoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for SoportePago content
+        required: true
+        schema:
+          $ref: '#/definitions/models.SoportePago'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.SoportePago'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - soporte_pago
+      description: delete the SoportePago
+      operationId: SoportePagoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+definitions:
+  models.CambioEstadoCumplido:
+    title: CambioEstadoCumplido
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CargoReponsable:
+        type: string
+      CumplidoProveedorId:
+        $ref: '#/definitions/models.CumplidoProveedor'
+      EstadoSoporteId:
+        $ref: '#/definitions/models.EstadoSoporte'
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      ResponsableId:
+        type: integer
+        format: int64
+  models.ComentarioSoporte:
+    title: ComentarioSoporte
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CambioEstadoCumplidoId:
+        $ref: '#/definitions/models.CambioEstadoCumplido'
+      Comentario:
+        type: string
+      Estado:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      SoportePagoId:
+        $ref: '#/definitions/models.SoportePago'
+  models.CumplidoProveedor:
+    title: CumplidoProveedor
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      NumeroCdp:
+        type: integer
+        format: int64
+      NumeroContrato:
+        type: string
+      VigenciaCdp:
+        type: integer
+        format: int64
+      VigenciaContrato:
+        type: integer
+        format: int64
+  models.EstadoSoporte:
+    title: EstadoSoporte
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Descripcion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: integer
+        format: int64
+  models.SoportePago:
+    title: SoportePago
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CumplidoProveedorId:
+        $ref: '#/definitions/models.CumplidoProveedor'
+      DocumentoId:
+        type: integer
+        format: int64
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+tags:
+- name: cumplido_proveedor
+  description: |
+    CumplidoProveedorController operations for CumplidoProveedor
+- name: soporte_pago
+  description: |
+    SoportePagoController operations for SoportePago
+- name: cambio_estado_cumplido
+  description: |
+    CambioEstadoCumplidoController operations for CambioEstadoCumplido
+- name: estado_soporte
+  description: |
+    EstadoSoporteController operations for EstadoSoporte
+- name: comentario_soporte
+  description: |
+    ComentarioSoporteController operations for ComentarioSoporte
