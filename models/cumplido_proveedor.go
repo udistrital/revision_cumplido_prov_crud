@@ -53,13 +53,16 @@ func GetCumplidoProveedorById(id int) (v *CumplidoProveedor, err error) {
 func GetAllCumplidoProveedor(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(CumplidoProveedor)).RelatedSel()
+	qs := o.QueryTable(new(CumplidoProveedor))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
+		} else if strings.HasSuffix(k, "in") {
+			arr := strings.Split(v, "|")
+			qs = qs.Filter(k, arr)
 		} else {
 			qs = qs.Filter(k, v)
 		}
@@ -149,7 +152,8 @@ func DeleteCumplidoProveedor(id int) (err error) {
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&CumplidoProveedor{Id: id}); err == nil {
+		v.Activo = false
+		if num, err = o.Update(v); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
