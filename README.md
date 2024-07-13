@@ -24,7 +24,7 @@ REVISION_CUMPLIDOS_PROOVEDORES_CRUD_GPORT=[Puerto de la BD]
 REVISION_CUMPLIDOS_PROOVEDORES_CRUD_PGDB=[Nombre de Base de Datos]
 REVISION_CUMPLIDOS_PROOVEDORES_CRUD_PGSCHEMA=[Nombre del Esquema de Base de Datos]
 
-**NOTA:** Las variables se pueden ver en el fichero conf/app.conf y están identificadas con CUMPLIDOS_CRUD_...
+**NOTA:** Las variables se pueden ver en el fichero conf/app.conf y están identificadas con REVISION_CUMPLIDOS_PROOVEDORES_CRUD...
 
 ### Ejecución del Proyecto
 ```shell
@@ -38,13 +38,13 @@ cd $GOPATH/src/github.com/udistrital/revision_cumplidos_proveedores_crud
 git pull origin develop && git checkout develop
 
 # 4. alimentar todas las variables de entorno que utiliza el proyecto.
-CUMPLIDOS_CRUD_PORT=8080 CUMPLIDOS_CRUD_SOME_VARIABLE bee run
+REVISION_CUMPLIDOS_PROOVEDORES_CRUD_PORT=8080 REVISION_CUMPLIDOS_PROOVEDORES_CRUD_SOME_VARIABLE bee run
 
 
 ### Ejecución Dockerfile
 ```shell
-# docker build --tag=cumplidos_crud . --no-cache
-# docker run -p 80:80 cumplidos_crud
+# docker build --tag=revision_cumplidos_proveedores_crud . --no-cache
+# docker run -p 80:80 revision_cumplidos_proveedores_crud
 ```
 
 ### Ejecución docker-compose
