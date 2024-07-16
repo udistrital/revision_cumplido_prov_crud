@@ -53,7 +53,7 @@ func GetComentarioSoporteById(id int) (v *ComentarioSoporte, err error) {
 func GetAllComentarioSoporte(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ComentarioSoporte))
+	qs := o.QueryTable(new(ComentarioSoporte)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

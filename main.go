@@ -10,9 +10,12 @@ import (
 	auditoria "github.com/udistrital/auditoria"
 	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
 	"github.com/udistrital/utils_oas/customerrorv2"
+	"github.com/udistrital/utils_oas/xray"
 )
 
 func main() {
+	AllowedOrigins := []string{"*.udistrital.edu.co"}
+	orm.Debug = true
 	orm.RegisterDataBase("default", "postgres", "postgres://"+
 		beego.AppConfig.String("PGuser")+":"+
 		beego.AppConfig.String("PGpass")+"@"+
@@ -21,11 +24,12 @@ func main() {
 		beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+
 		beego.AppConfig.String("PGschema")+"")
 	if beego.BConfig.RunMode == "dev" {
+		AllowedOrigins = []string{"*"}
 		beego.BConfig.WebConfig.DirectoryIndex = true
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
-		AllowOrigins: []string{"*"},
+		AllowOrigins: AllowedOrigins,
 		AllowMethods: []string{"PUT", "PATCH", "GET", "POST", "OPTIONS", "DELETE"},
 		AllowHeaders: []string{"Origin", "x-requested-with",
 			"content-type",
@@ -36,6 +40,7 @@ func main() {
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 	}))
+	xray.InitXRay()
 	auditoria.InitMiddleware()
 	beego.ErrorController(&customerrorv2.CustomErrorController{})
 	apistatus.Init()
