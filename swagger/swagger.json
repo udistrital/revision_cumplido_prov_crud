@@ -534,13 +534,13 @@
                 }
             }
         },
-        "/estado_soporte/": {
+        "/estado_cumplido/": {
             "get": {
                 "tags": [
-                    "estado_soporte"
+                    "estado_cumplido"
                 ],
-                "description": "get EstadoSoporte",
-                "operationId": "EstadoSoporteController.Get All",
+                "description": "get EstadoCumplido",
+                "operationId": "EstadoCumplidoController.Get All",
                 "parameters": [
                     {
                         "in": "query",
@@ -583,7 +583,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.EstadoSoporte"
+                            "$ref": "#/definitions/models.EstadoCumplido"
                         }
                     },
                     "404": {
@@ -593,24 +593,24 @@
             },
             "post": {
                 "tags": [
-                    "estado_soporte"
+                    "estado_cumplido"
                 ],
-                "description": "create EstadoSoporte",
-                "operationId": "EstadoSoporteController.Post",
+                "description": "create EstadoCumplido",
+                "operationId": "EstadoCumplidoController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for EstadoSoporte content",
+                        "description": "body for EstadoCumplido content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.EstadoSoporte"
+                            "$ref": "#/definitions/models.EstadoCumplido"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.EstadoSoporte"
+                        "description": "{int} models.EstadoCumplido"
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -618,13 +618,13 @@
                 }
             }
         },
-        "/estado_soporte/{id}": {
+        "/estado_cumplido/{id}": {
             "get": {
                 "tags": [
-                    "estado_soporte"
+                    "estado_cumplido"
                 ],
-                "description": "get EstadoSoporte by id",
-                "operationId": "EstadoSoporteController.Get One",
+                "description": "get EstadoCumplido by id",
+                "operationId": "EstadoCumplidoController.Get One",
                 "parameters": [
                     {
                         "in": "path",
@@ -638,7 +638,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.EstadoSoporte"
+                            "$ref": "#/definitions/models.EstadoCumplido"
                         }
                     },
                     "404": {
@@ -648,10 +648,10 @@
             },
             "put": {
                 "tags": [
-                    "estado_soporte"
+                    "estado_cumplido"
                 ],
-                "description": "update the EstadoSoporte",
-                "operationId": "EstadoSoporteController.Put",
+                "description": "update the EstadoCumplido",
+                "operationId": "EstadoCumplidoController.Put",
                 "parameters": [
                     {
                         "in": "path",
@@ -663,10 +663,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for EstadoSoporte content",
+                        "description": "body for EstadoCumplido content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.EstadoSoporte"
+                            "$ref": "#/definitions/models.EstadoCumplido"
                         }
                     }
                 ],
@@ -674,7 +674,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.EstadoSoporte"
+                            "$ref": "#/definitions/models.EstadoCumplido"
                         }
                     },
                     "400": {
@@ -684,10 +684,10 @@
             },
             "delete": {
                 "tags": [
-                    "estado_soporte"
+                    "estado_cumplido"
                 ],
-                "description": "delete the EstadoSoporte",
-                "operationId": "EstadoSoporteController.Delete",
+                "description": "delete the EstadoCumplido",
+                "operationId": "EstadoCumplidoController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -892,11 +892,12 @@
                 "CargoReponsable": {
                     "type": "string"
                 },
-                "CumplidoProveedorId": {
-                    "$ref": "#/definitions/models.CumplidoProveedor"
+                "DocumentoResponsable": {
+                    "type": "integer",
+                    "format": "int64"
                 },
-                "EstadoSoporteId": {
-                    "$ref": "#/definitions/models.EstadoSoporte"
+                "EstadoCumplidoId": {
+                    "$ref": "#/definitions/models.EstadoCumplido"
                 },
                 "FechaCreacion": {
                     "type": "string",
@@ -907,10 +908,6 @@
                     "format": "datetime"
                 },
                 "Id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "ResponsableId": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -928,9 +925,6 @@
                 },
                 "Comentario": {
                     "type": "string"
-                },
-                "Estado": {
-                    "type": "boolean"
                 },
                 "FechaCreacion": {
                     "type": "string",
@@ -968,16 +962,8 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "NumeroCdp": {
-                    "type": "integer",
-                    "format": "int64"
-                },
                 "NumeroContrato": {
                     "type": "string"
-                },
-                "VigenciaCdp": {
-                    "type": "integer",
-                    "format": "int64"
                 },
                 "VigenciaContrato": {
                     "type": "integer",
@@ -985,8 +971,8 @@
                 }
             }
         },
-        "models.EstadoSoporte": {
-            "title": "EstadoSoporte",
+        "models.EstadoCumplido": {
+            "title": "EstadoCumplido",
             "type": "object",
             "properties": {
                 "Activo": {
@@ -1000,8 +986,7 @@
                     "format": "int64"
                 },
                 "Nombre": {
-                    "type": "integer",
-                    "format": "int64"
+                    "type": "string"
                 }
             }
         },
@@ -1048,8 +1033,8 @@
             "description": "CambioEstadoCumplidoController operations for CambioEstadoCumplido\n"
         },
         {
-            "name": "estado_soporte",
-            "description": "EstadoSoporteController operations for EstadoSoporte\n"
+            "name": "estado_cumplido",
+            "description": "EstadoCumplidoController operations for EstadoCumplido\n"
         },
         {
             "name": "comentario_soporte",

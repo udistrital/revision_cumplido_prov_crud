@@ -16,7 +16,6 @@ type ComentarioSoporte struct {
 	FechaCreacion          time.Time             `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
 	FechaModificacion      time.Time             `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 	CambioEstadoCumplidoId *CambioEstadoCumplido `orm:"column(cambio_estado_cumplido_id);rel(fk)"`
-	Estado                 bool                  `orm:"column(estado);null"`
 	Activo                 bool                  `orm:"column(activo);null"`
 	SoportePagoId          *SoportePago          `orm:"column(soporte_pago_id);rel(fk)"`
 }
@@ -153,7 +152,7 @@ func DeleteComentarioSoporte(id int) (err error) {
 	if err = o.Read(&v); err == nil {
 		var num int64
 		v.Activo = false
-		if num, err = o.Update(v); err == nil {
+		if num, err = o.Update(&v); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

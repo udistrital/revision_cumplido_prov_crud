@@ -142,7 +142,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoSoporteController"] = append(beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoSoporteController"],
+    beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoCumplidoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoCumplidoController"],
         beego.ControllerComments{
             Method: "Post",
             Router: "/",
@@ -151,7 +151,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoSoporteController"] = append(beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoSoporteController"],
+    beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoCumplidoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoCumplidoController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: "/",
@@ -160,7 +160,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoSoporteController"] = append(beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoSoporteController"],
+    beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoCumplidoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoCumplidoController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: "/:id",
@@ -169,7 +169,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoSoporteController"] = append(beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoSoporteController"],
+    beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoCumplidoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoCumplidoController"],
         beego.ControllerComments{
             Method: "Put",
             Router: "/:id",
@@ -178,7 +178,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoSoporteController"] = append(beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoSoporteController"],
+    beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoCumplidoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/revision_cumplidos_proveedores_crud/controllers:EstadoCumplidoController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: "/:id",

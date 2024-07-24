@@ -14,8 +14,6 @@ type CumplidoProveedor struct {
 	Id                int       `orm:"column(id);pk;auto"`
 	NumeroContrato    string    `orm:"column(numero_contrato);null"`
 	VigenciaContrato  int       `orm:"column(vigencia_contrato);null"`
-	NumeroCdp         int       `orm:"column(numero_cdp);null"`
-	VigenciaCdp       int       `orm:"column(vigencia_cdp);null"`
 	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
 	Activo            bool      `orm:"column(activo);null"`
@@ -40,6 +38,7 @@ func AddCumplidoProveedor(m *CumplidoProveedor) (id int64, err error) {
 // GetCumplidoProveedorById retrieves CumplidoProveedor by Id. Returns error if
 // Id doesn't exist
 func GetCumplidoProveedorById(id int) (v *CumplidoProveedor, err error) {
+	
 	o := orm.NewOrm()
 	v = &CumplidoProveedor{Id: id}
 	if err = o.Read(v); err == nil {
@@ -153,7 +152,7 @@ func DeleteCumplidoProveedor(id int) (err error) {
 	if err = o.Read(&v); err == nil {
 		var num int64
 		v.Activo = false
-		if num, err = o.Update(v); err == nil {
+		if num, err = o.Update(&v); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

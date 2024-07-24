@@ -34,9 +34,9 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/estado_soporte",
+		beego.NSNamespace("/estado_cumplido",
 			beego.NSInclude(
-				&controllers.EstadoSoporteController{},
+				&controllers.EstadoCumplidoController{},
 			),
 		),
 

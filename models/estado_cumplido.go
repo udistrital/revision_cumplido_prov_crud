@@ -9,46 +9,46 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type EstadoSoporte struct {
+type EstadoCumplido struct {
 	Id          int    `orm:"column(id);pk;auto"`
-	Nombre      int    `orm:"column(nombre);null"`
+	Nombre      string    `orm:"column(nombre);null"`
 	Descripcion string `orm:"column(descripcion);null"`
 	Activo      bool   `orm:"column(activo);null"`
 }
 
-func (t *EstadoSoporte) TableName() string {
-	return "estado_soporte"
+func (t *EstadoCumplido) TableName() string {
+	return "estado_cumplido"
 }
 
 func init() {
-	orm.RegisterModel(new(EstadoSoporte))
+	orm.RegisterModel(new(EstadoCumplido))
 }
 
-// AddEstadoSoporte insert a new EstadoSoporte into database and returns
+// AddEstadoCumplido insert a new EstadoCumplido into database and returns
 // last inserted Id on success.
-func AddEstadoSoporte(m *EstadoSoporte) (id int64, err error) {
+func AddEstadoCumplido(m *EstadoCumplido) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetEstadoSoporteById retrieves EstadoSoporte by Id. Returns error if
+// GetEstadoCumplidoteById retrieves EstadoCumplido by Id. Returns error if
 // Id doesn't exist
-func GetEstadoSoporteById(id int) (v *EstadoSoporte, err error) {
+func GetEstadoCumplidoById(id int) (v *EstadoCumplido, err error) {
 	o := orm.NewOrm()
-	v = &EstadoSoporte{Id: id}
+	v = &EstadoCumplido{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllEstadoSoporte retrieves all EstadoSoporte matches certain condition. Returns empty list if
+// GetAllEstadoCumplido retrieves all EstadoCumplido matches certain condition. Returns empty list if
 // no records exist
-func GetAllEstadoSoporte(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllEstadoCumplido(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(EstadoSoporte)).RelatedSel()
+	qs := o.QueryTable(new(EstadoCumplido)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -101,7 +101,7 @@ func GetAllEstadoSoporte(query map[string]string, fields []string, sortby []stri
 		}
 	}
 
-	var l []EstadoSoporte
+	var l []EstadoCumplido
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -124,11 +124,11 @@ func GetAllEstadoSoporte(query map[string]string, fields []string, sortby []stri
 	return nil, err
 }
 
-// UpdateEstadoSoporte updates EstadoSoporte by Id and returns error if
+// UpdateEstadoCumplido updates EstadoCumplidoby Id and returns error if
 // the record to be updated doesn't exist
-func UpdateEstadoSoporteById(m *EstadoSoporte) (err error) {
+func UpdateEstadoCumplidoById(m *EstadoCumplido) (err error) {
 	o := orm.NewOrm()
-	v := EstadoSoporte{Id: m.Id}
+	v := EstadoCumplido{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -139,18 +139,21 @@ func UpdateEstadoSoporteById(m *EstadoSoporte) (err error) {
 	return
 }
 
-// DeleteEstadoSoporte deletes EstadoSoporte by Id and returns error if
+// DeleteEstadoCumplido deletes EstadoCumplido by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteEstadoSoporte(id int) (err error) {
+func DeleteEstadoCumplido(id int) (err error) {
+	fmt.Println("si entro " , id)
 	o := orm.NewOrm()
-	v := EstadoSoporte{Id: id}
+	v := EstadoCumplido{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
 		v.Activo = false
-		if num, err = o.Update(v); err == nil {
+		if num, err = o.Update(&v); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
 	return
 }
+
+

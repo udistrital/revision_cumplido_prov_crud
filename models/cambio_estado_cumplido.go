@@ -12,9 +12,8 @@ import (
 
 type CambioEstadoCumplido struct {
 	Id                  int                `orm:"column(id);pk;auto"`
-	EstadoSoporteId     *EstadoSoporte     `orm:"column(estado_soporte_id);rel(fk)"`
-	CumplidoProveedorId *CumplidoProveedor `orm:"column(cumplido_proveedor_id);rel(fk)"`
-	ResponsableId       int                `orm:"column(responsable_id);null"`
+	EstadoCumplidoId     *EstadoCumplido     `orm:"column(estado_cumplido_id);rel(fk)"`
+	DocumentoResponsable       int                `orm:"column(documento_responsable);null"`
 	CargoReponsable     string             `orm:"column(cargo_reponsable);null"`
 	FechaCreacion       time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
 	FechaModificacion   time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
@@ -153,7 +152,7 @@ func DeleteCambioEstadoCumplido(id int) (err error) {
 	if err = o.Read(&v); err == nil {
 		var num int64
 		v.Activo = false
-		if num, err = o.Update(v); err == nil {
+		if num, err = o.Update(&v); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
