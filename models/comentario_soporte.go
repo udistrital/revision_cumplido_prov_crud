@@ -16,7 +16,7 @@ type ComentarioSoporte struct {
 	FechaCreacion          time.Time             `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
 	FechaModificacion      time.Time             `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 	CambioEstadoCumplidoId *CambioEstadoCumplido `orm:"column(cambio_estado_cumplido_id);rel(fk)"`
-	Activo                 bool                  `orm:"column(activo);default(true)"`
+	Activo                 bool                  `orm:"column(activo);default(true);null"`
 	SoportePagoId          *SoportePago          `orm:"column(soporte_pago_id);rel(fk)"`
 }
 
