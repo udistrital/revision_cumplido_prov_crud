@@ -16,7 +16,7 @@ type CumplidoProveedor struct {
 	VigenciaContrato  int       `orm:"column(vigencia_contrato);null"`
 	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
-	Activo            bool      `orm:"column(activo);null"`
+	Activo            bool      `orm:"column(activo);default(true)"`
 }
 
 func (t *CumplidoProveedor) TableName() string {

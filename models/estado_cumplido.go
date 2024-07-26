@@ -13,7 +13,8 @@ type EstadoCumplido struct {
 	Id          int    `orm:"column(id);pk;auto"`
 	Nombre      string    `orm:"column(nombre);null"`
 	Descripcion string `orm:"column(descripcion);null"`
-	Activo      bool   `orm:"column(activo);null"`
+	Activo      bool   `orm:"column(activo);default(true) "`
+	Abreviacion string `orm:"column(abreviacion);null"`
 }
 
 func (t *EstadoCumplido) TableName() string {
