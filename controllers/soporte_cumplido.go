@@ -5,20 +5,18 @@ import (
 	"errors"
 	"strconv"
 	"strings"
-
 	"github.com/udistrital/revision_cumplidos_proveedores_crud/models"
-
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
+	"github.com/astaxie/beego"
 )
 
-// SoportePagoController operations for SoportePago
-type SoportePagoController struct {
+// SoporteCumplidoController operations for SoporteCumplido
+type SoporteCumplidoController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *SoportePagoController) URLMapping() {
+func (c *SoporteCumplidoController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -28,15 +26,15 @@ func (c *SoportePagoController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create SoportePago
-// @Param	body		body 	models.SoportePago	true		"body for SoportePago content"
-// @Success 201 {int} models.SoportePago
+// @Description create SoporteCumplido
+// @Param	body		body 	models.SoporteCumplido	true		"body for SoporteCumplido content"
+// @Success 201 {int} models.SoporteCumplido
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
-func (c *SoportePagoController) Post() {
-	var v models.SoportePago
+func (c *SoporteCumplidoController) Post() {
+	var v models.SoporteCumplido
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddSoportePago(&v); err == nil {
+		if _, err := models.AddSoporteCumplido(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = map[string]interface{}{"Success": true, "Status": "201", "Message": "Registration successful", "Data": v}
 		} else {
@@ -54,15 +52,15 @@ func (c *SoportePagoController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get SoportePago by id
+// @Description get SoporteCumplido by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.SoportePago
+// @Success 200 {object} models.SoporteCumplido
 // @Failure 404 not found resource
 // @router /:id [get]
-func (c *SoportePagoController) GetOne() {
+func (c *SoporteCumplidoController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetSoportePagoById(id)
+	v, err := models.GetSoporteCumplidoById(id)
 	if err != nil {
 		logs.Error(err)
 		c.Data["mesaage"] = "Error service GetOne: The request contains an incorrect parameter or no record exists"
@@ -75,17 +73,17 @@ func (c *SoportePagoController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get SoportePago
+// @Description get SoporteCumplido
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.SoportePago
+// @Success 200 {object} models.SoporteCumplido
 // @Failure 404 not found resource
 // @router / [get]
-func (c *SoportePagoController) GetAll() {
+func (c *SoporteCumplidoController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -127,7 +125,7 @@ func (c *SoportePagoController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllSoportePago(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllSoporteCumplido(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		logs.Error(err)
 		c.Data["mesaage"] = "Error service GetAll: The request contains an incorrect parameter or no record exists"
@@ -143,18 +141,18 @@ func (c *SoportePagoController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the SoportePago
+// @Description update the SoporteCumplido
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.SoportePago	true		"body for SoportePago content"
-// @Success 200 {object} models.SoportePago
+// @Param	body		body 	models.SoporteCumplido	true		"body for SoporteCumplido content"
+// @Success 200 {object} models.SoporteCumplido
 // @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
-func (c *SoportePagoController) Put() {
+func (c *SoporteCumplidoController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.SoportePago{Id: id}
+	v := models.SoporteCumplido{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateSoportePagoById(&v); err == nil {
+		if err := models.UpdateSoporteCumplidoById(&v); err == nil {
 			c.Data["json"] = map[string]interface{}{"Success": true, "Status": "200", "Message": "Update successful", "Data": v}
 		} else {
 			logs.Error(err)
@@ -171,15 +169,15 @@ func (c *SoportePagoController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the SoportePago
+// @Description delete the SoporteCumplido
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]
-func (c *SoportePagoController) Delete() {
+func (c *SoporteCumplidoController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteSoportePago(id); err == nil {
+	if err := models.DeleteSoporteCumplido(id); err == nil {
 		d := map[string]interface{}{"Id": id}
 		c.Data["json"] = map[string]interface{}{"Success": true, "Status": "200", "Message": "Delete successful", "Data": d}
 	} else {

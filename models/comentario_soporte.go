@@ -12,12 +12,12 @@ import (
 
 type ComentarioSoporte struct {
 	Id                     int                   `orm:"column(id);pk;auto"`
+	SoporteCumplidoId      *SoporteCumplido      `orm:"column(soporte_cumplido_id);rel(fk)"`
+	CambioEstadoCumplidoId *CambioEstadoCumplido `orm:"column(cambio_estado_cumplido_id);rel(fk)"`
 	Comentario             string                `orm:"column(comentario);null"`
+	Activo            	   bool              	 `orm:"column(activo);default(true);null"`
 	FechaCreacion          time.Time             `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
 	FechaModificacion      time.Time             `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
-	CambioEstadoCumplidoId *CambioEstadoCumplido `orm:"column(cambio_estado_cumplido_id);rel(fk)"`
-	Activo                 bool                  `orm:"column(activo);default(true);null"`
-	SoportePagoId          *SoportePago          `orm:"column(soporte_pago_id);rel(fk)"`
 }
 
 func (t *ComentarioSoporte) TableName() string {

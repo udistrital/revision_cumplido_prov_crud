@@ -22,9 +22,9 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/soporte_pago",
+		beego.NSNamespace("/soporte_cumplido",
 			beego.NSInclude(
-				&controllers.SoportePagoController{},
+				&controllers.SoporteCumplidoController{},
 			),
 		),
 
@@ -45,6 +45,18 @@ func init() {
 				&controllers.ComentarioSoporteController{},
 			),
 		),
+
+		beego.NSNamespace("/informacion_pago",
+			beego.NSInclude(
+				&controllers.InformacionPagoController{},
+			),
+		),
+		beego.NSNamespace("/tipo_pago",
+			beego.NSInclude(
+				&controllers.TipoPagoController{},
+			),
+		),
+		
 	)
 	beego.AddNamespace(ns)
 }

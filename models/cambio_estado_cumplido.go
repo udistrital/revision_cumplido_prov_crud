@@ -10,14 +10,16 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
+
 type CambioEstadoCumplido struct {
-	Id                  int                `orm:"column(id);pk;auto"`
-	EstadoCumplidoId     *EstadoCumplido     `orm:"column(estado_cumplido_id);rel(fk)"`
-	DocumentoResponsable       int                `orm:"column(documento_responsable);null"`
-	CargoReponsable     string             `orm:"column(cargo_reponsable);null"`
-	FechaCreacion       time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
-	FechaModificacion   time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
-	Activo              bool               `orm:"column(activo);default(true);null"`
+	Id                   int                `orm:"column(id);pk;auto"`
+	EstadoCumplidoId     *EstadoCumplido    `orm:"column(estado_cumplido_id);rel(fk)"`
+	CumplidoProveedorId  *CumplidoProveedor `orm:"column(cumplido_proveedor_id);rel(fk)"`
+	DocumentoResponsable int                `orm:"column(documento_responsable)"`
+	CargoReponsable      string             `orm:"column(cargo_reponsable)"`
+	Activo            	   bool              	 `orm:"column(activo);default(true);null"`
+	FechaCreacion        time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion    time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 }
 
 func (t *CambioEstadoCumplido) TableName() string {

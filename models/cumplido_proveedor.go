@@ -11,12 +11,12 @@ import (
 )
 
 type CumplidoProveedor struct {
-	Id                int       `orm:"column(id);pk;auto"`
-	NumeroContrato    string    `orm:"column(numero_contrato);null"`
-	VigenciaContrato  int       `orm:"column(vigencia_contrato);null"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Id                int      `orm:"column(id);pk;auto"`
+	NumeroContrato    string    `orm:"column(numero_contrato)"`
+	VigenciaContrato  int       `orm:"column(vigencia_contrato)"`
+	Activo            	   bool              	 `orm:"column(activo);default(true);null"`
 	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
-	Activo            bool      `orm:"column(activo);default(true);null"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 }
 
 func (t *CumplidoProveedor) TableName() string {
@@ -38,7 +38,6 @@ func AddCumplidoProveedor(m *CumplidoProveedor) (id int64, err error) {
 // GetCumplidoProveedorById retrieves CumplidoProveedor by Id. Returns error if
 // Id doesn't exist
 func GetCumplidoProveedorById(id int) (v *CumplidoProveedor, err error) {
-	
 	o := orm.NewOrm()
 	v = &CumplidoProveedor{Id: id}
 	if err = o.Read(v); err == nil {
@@ -52,16 +51,13 @@ func GetCumplidoProveedorById(id int) (v *CumplidoProveedor, err error) {
 func GetAllCumplidoProveedor(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(CumplidoProveedor)).RelatedSel()
+	qs := o.QueryTable(new(CumplidoProveedor))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
-		} else if strings.HasSuffix(k, "in") {
-			arr := strings.Split(v, "|")
-			qs = qs.Filter(k, arr)
 		} else {
 			qs = qs.Filter(k, v)
 		}

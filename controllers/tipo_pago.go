@@ -1,23 +1,22 @@
 package controllers
+
 import (
 	"encoding/json"
 	"errors"
 	"strconv"
 	"strings"
-
 	"github.com/udistrital/revision_cumplidos_proveedores_crud/models"
-
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 )
 
-// CambioEstadoCumplidoController operations for CambioEstadoCumplido
-type CambioEstadoCumplidoController struct {
+// TipoPagoController operations for TipoPago
+type TipoPagoController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *CambioEstadoCumplidoController) URLMapping() {
+func (c *TipoPagoController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -27,15 +26,15 @@ func (c *CambioEstadoCumplidoController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create CambioEstadoCumplido
-// @Param	body		body 	models.CambioEstadoCumplido	true		"body for CambioEstadoCumplido content"
-// @Success 201 {int} models.CambioEstadoCumplido
-// @Failure 400 the request contains incorrect syntax
+// @Description create TipoPago
+// @Param	body		body 	models.TipoPago	true		"body for TipoPago content"
+// @Success 201 {int} models.TipoPago
+// @Failure 403 body is empty
 // @router / [post]
-func (c *CambioEstadoCumplidoController) Post() {
-	var v models.CambioEstadoCumplido
+func (c *TipoPagoController) Post() {
+	var v models.TipoPago
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddCambioEstadoCumplido(&v); err == nil {
+		if _, err := models.AddTipoPago(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = map[string]interface{}{"Success": true, "Status": "201", "Message": "Registration successful", "Data": v}
 		} else {
@@ -53,15 +52,15 @@ func (c *CambioEstadoCumplidoController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get CambioEstadoCumplido by id
+// @Description get TipoPago by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.CambioEstadoCumplido
-// @Failure 404 not found resource
+// @Success 200 {object} models.TipoPago
+// @Failure 403 :id is empty
 // @router /:id [get]
-func (c *CambioEstadoCumplidoController) GetOne() {
+func (c *TipoPagoController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetCambioEstadoCumplidoById(id)
+	v, err := models.GetTipoPagoById(id)
 	if err != nil {
 		logs.Error(err)
 		c.Data["mesaage"] = "Error service GetOne: The request contains an incorrect parameter or no record exists"
@@ -74,24 +73,23 @@ func (c *CambioEstadoCumplidoController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get CambioEstadoCumplido
+// @Description get TipoPago
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.CambioEstadoCumplido
-// @Failure 404 not found resource
+// @Success 200 {object} models.TipoPago
+// @Failure 403
 // @router / [get]
-func (c *CambioEstadoCumplidoController) GetAll() {
+func (c *TipoPagoController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
 	var query = make(map[string]string)
 	var limit int64 = 10
 	var offset int64
-
 	// fields: col1,col2,entity.col3
 	if v := c.GetString("fields"); v != "" {
 		fields = strings.Split(v, ",")
@@ -126,7 +124,7 @@ func (c *CambioEstadoCumplidoController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllCambioEstadoCumplido(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllTipoPago(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		logs.Error(err)
 		c.Data["mesaage"] = "Error service GetAll: The request contains an incorrect parameter or no record exists"
@@ -142,18 +140,18 @@ func (c *CambioEstadoCumplidoController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the CambioEstadoCumplido
+// @Description update the TipoPago
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.CambioEstadoCumplido	true		"body for CambioEstadoCumplido content"
-// @Success 200 {object} models.CambioEstadoCumplido
-// @Failure 400 the request contains incorrect syntax
+// @Param	body		body 	models.TipoPago	true		"body for TipoPago content"
+// @Success 200 {object} models.TipoPago
+// @Failure 403 :id is not int
 // @router /:id [put]
-func (c *CambioEstadoCumplidoController) Put() {
+func (c *TipoPagoController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.CambioEstadoCumplido{Id: id}
+	v := models.TipoPago{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateCambioEstadoCumplidoById(&v); err == nil {
+		if err := models.UpdateTipoPagoById(&v); err == nil {
 			c.Data["json"] = map[string]interface{}{"Success": true, "Status": "200", "Message": "Update successful", "Data": v}
 		} else {
 			logs.Error(err)
@@ -170,15 +168,15 @@ func (c *CambioEstadoCumplidoController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the CambioEstadoCumplido
+// @Description delete the TipoPago
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
-// @Failure 404 not found resource
+// @Failure 403 id is empty
 // @router /:id [delete]
-func (c *CambioEstadoCumplidoController) Delete() {
+func (c *TipoPagoController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteCambioEstadoCumplido(id); err == nil {
+	if err := models.DeleteTipoPago(id); err == nil {
 		d := map[string]interface{}{"Id": id}
 		c.Data["json"] = map[string]interface{}{"Success": true, "Status": "200", "Message": "Delete successful", "Data": d}
 	} else {

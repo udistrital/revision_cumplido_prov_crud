@@ -707,13 +707,13 @@
                 }
             }
         },
-        "/soporte_pago/": {
+        "/informacion_pago/": {
             "get": {
                 "tags": [
-                    "soporte_pago"
+                    "informacion_pago"
                 ],
-                "description": "get SoportePago",
-                "operationId": "SoportePagoController.Get All",
+                "description": "get InformacionPago",
+                "operationId": "InformacionPagoController.Get All",
                 "parameters": [
                     {
                         "in": "query",
@@ -756,48 +756,48 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.SoportePago"
+                            "$ref": "#/definitions/models.InformacionPago"
                         }
                     },
-                    "404": {
-                        "description": "not found resource"
+                    "403": {
+                        "description": ""
                     }
                 }
             },
             "post": {
                 "tags": [
-                    "soporte_pago"
+                    "informacion_pago"
                 ],
-                "description": "create SoportePago",
-                "operationId": "SoportePagoController.Post",
+                "description": "create InformacionPago",
+                "operationId": "InformacionPagoController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for SoportePago content",
+                        "description": "body for InformacionPago content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.SoportePago"
+                            "$ref": "#/definitions/models.InformacionPago"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.SoportePago"
+                        "description": "{int} models.InformacionPago"
                     },
-                    "400": {
-                        "description": "the request contains incorrect syntax"
+                    "403": {
+                        "description": "body is empty"
                     }
                 }
             }
         },
-        "/soporte_pago/{id}": {
+        "/informacion_pago/{id}": {
             "get": {
                 "tags": [
-                    "soporte_pago"
+                    "informacion_pago"
                 ],
-                "description": "get SoportePago by id",
-                "operationId": "SoportePagoController.Get One",
+                "description": "get InformacionPago by id",
+                "operationId": "InformacionPagoController.Get One",
                 "parameters": [
                     {
                         "in": "path",
@@ -811,20 +811,20 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.SoportePago"
+                            "$ref": "#/definitions/models.InformacionPago"
                         }
                     },
-                    "404": {
-                        "description": "not found resource"
+                    "403": {
+                        "description": ":id is empty"
                     }
                 }
             },
             "put": {
                 "tags": [
-                    "soporte_pago"
+                    "informacion_pago"
                 ],
-                "description": "update the SoportePago",
-                "operationId": "SoportePagoController.Put",
+                "description": "update the InformacionPago",
+                "operationId": "InformacionPagoController.Put",
                 "parameters": [
                     {
                         "in": "path",
@@ -836,10 +836,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for SoportePago content",
+                        "description": "body for InformacionPago content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.SoportePago"
+                            "$ref": "#/definitions/models.InformacionPago"
                         }
                     }
                 ],
@@ -847,7 +847,180 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.SoportePago"
+                            "$ref": "#/definitions/models.InformacionPago"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "informacion_pago"
+                ],
+                "description": "delete the InformacionPago",
+                "operationId": "InformacionPagoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/soporte_cumplido/": {
+            "get": {
+                "tags": [
+                    "soporte_cumplido"
+                ],
+                "description": "get SoporteCumplido",
+                "operationId": "SoporteCumplidoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SoporteCumplido"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "soporte_cumplido"
+                ],
+                "description": "create SoporteCumplido",
+                "operationId": "SoporteCumplidoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for SoporteCumplido content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.SoporteCumplido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.SoporteCumplido"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/soporte_cumplido/{id}": {
+            "get": {
+                "tags": [
+                    "soporte_cumplido"
+                ],
+                "description": "get SoporteCumplido by id",
+                "operationId": "SoporteCumplidoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SoporteCumplido"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "soporte_cumplido"
+                ],
+                "description": "update the SoporteCumplido",
+                "operationId": "SoporteCumplidoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for SoporteCumplido content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.SoporteCumplido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SoporteCumplido"
                         }
                     },
                     "400": {
@@ -857,10 +1030,10 @@
             },
             "delete": {
                 "tags": [
-                    "soporte_pago"
+                    "soporte_cumplido"
                 ],
-                "description": "delete the SoportePago",
-                "operationId": "SoportePagoController.Delete",
+                "description": "delete the SoporteCumplido",
+                "operationId": "SoporteCumplidoController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -879,6 +1052,179 @@
                     }
                 }
             }
+        },
+        "/tipo_pago/": {
+            "get": {
+                "tags": [
+                    "tipo_pago"
+                ],
+                "description": "get TipoPago",
+                "operationId": "TipoPagoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPago"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tipo_pago"
+                ],
+                "description": "create TipoPago",
+                "operationId": "TipoPagoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoPago content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPago"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TipoPago"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/tipo_pago/{id}": {
+            "get": {
+                "tags": [
+                    "tipo_pago"
+                ],
+                "description": "get TipoPago by id",
+                "operationId": "TipoPagoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPago"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "tipo_pago"
+                ],
+                "description": "update the TipoPago",
+                "operationId": "TipoPagoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoPago content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPago"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPago"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tipo_pago"
+                ],
+                "description": "delete the TipoPago",
+                "operationId": "TipoPagoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -891,6 +1237,9 @@
                 },
                 "CargoReponsable": {
                     "type": "string"
+                },
+                "CumplidoProveedorId": {
+                    "$ref": "#/definitions/models.CumplidoProveedor"
                 },
                 "DocumentoResponsable": {
                     "type": "integer",
@@ -938,8 +1287,8 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "SoportePagoId": {
-                    "$ref": "#/definitions/models.SoportePago"
+                "SoporteCumplidoId": {
+                    "$ref": "#/definitions/models.SoporteCumplido"
                 }
             }
         },
@@ -978,6 +1327,9 @@
                 "Activo": {
                     "type": "boolean"
                 },
+                "CodigoAbreviación": {
+                    "type": "string"
+                },
                 "Descripcion": {
                     "type": "string"
                 },
@@ -990,8 +1342,65 @@
                 }
             }
         },
-        "models.SoportePago": {
-            "title": "SoportePago",
+        "models.InformacionPago": {
+            "title": "InformacionPago",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "BancoId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CumplidoProveedorId": {
+                    "$ref": "#/definitions/models.CumplidoProveedor"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaFinal": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaInicial": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "NumeroCuenta": {
+                    "type": "string"
+                },
+                "NumeroFactura": {
+                    "type": "string"
+                },
+                "TipoCuentaBancariaId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "TipoDocumentoCobroId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "TipoPagoId": {
+                    "$ref": "#/definitions/models.TipoPago"
+                },
+                "ValorCumplido": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.SoporteCumplido": {
+            "title": "SoporteCumplido",
             "type": "object",
             "properties": {
                 "Activo": {
@@ -1017,6 +1426,28 @@
                     "format": "int64"
                 }
             }
+        },
+        "models.TipoPago": {
+            "title": "TipoPago",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                }
+            }
         }
     },
     "tags": [
@@ -1025,8 +1456,8 @@
             "description": "CumplidoProveedorController operations for CumplidoProveedor\n"
         },
         {
-            "name": "soporte_pago",
-            "description": "SoportePagoController operations for SoportePago\n"
+            "name": "soporte_cumplido",
+            "description": "SoporteCumplidoController operations for SoporteCumplido\n"
         },
         {
             "name": "cambio_estado_cumplido",
@@ -1039,6 +1470,14 @@
         {
             "name": "comentario_soporte",
             "description": "ComentarioSoporteController operations for ComentarioSoporte\n"
+        },
+        {
+            "name": "informacion_pago",
+            "description": "InformacionPagoController operations for InformacionPago\n"
+        },
+        {
+            "name": "tipo_pago",
+            "description": "TipoPagoController operations for TipoPago\n"
         }
     ]
 }

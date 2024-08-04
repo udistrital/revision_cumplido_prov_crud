@@ -5,60 +5,67 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type EstadoCumplido struct {
-	Id                int    `orm:"column(id);pk;auto"`
-	Nombre            string `orm:"column(nombre)"`
-	CodigoAbreviación string `orm:"column(codigo_abreviación);null"`
-	Descripcion       string `orm:"column(descripcion);null"`
-	Activo            	   bool              	 `orm:"column(activo);default(true);null"`
+type InformacionPago struct {
+	Id                 int                `orm:"column(id);pk;auto"`
+	TipoPagoId           *TipoPago          `orm:"column(tipo_pago_id);rel(fk)"`
+	CumplidoProveedorId  *CumplidoProveedor `orm:"column(cumplido_proveedor_id);rel(fk)"`
+	TipoDocumentoCobroId int                `orm:"column(tipo_documento_cobro_id)"`
+	TipoCuentaBancariaId int                `orm:"column(tipo_cuenta_bancaria_id)"`
+	BancoId              int                `orm:"column(banco_id)"`
+	FechaInicial         time.Time          `orm:"column(fecha_inicial);type(timestamp without time zone);null"`
+	FechaFinal           time.Time          `orm:"column(fecha_final);type(timestamp without time zone);null"`
+	NumeroFactura        string             `orm:"column(numero_factura)"`
+	ValorCumplido        float64            `orm:"column(valor_cumplido)"`
+	NumeroCuenta         string             `orm:"column(numero_cuenta)"`
+	Activo            	   bool              `orm:"column(activo);default(true);null"`
+	FechaCreacion        time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion    time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 }
 
-func (t *EstadoCumplido) TableName() string {
-	return "estado_cumplido"
+func (t *InformacionPago) TableName() string {
+	return "informacion_pago"
 }
 
 func init() {
-	orm.RegisterModel(new(EstadoCumplido))
+	orm.RegisterModel(new(InformacionPago))
 }
 
-// AddEstadoCumplido insert a new EstadoCumplido into database and returns
+// AddInformacionPago insert a new InformacionPago into database and returns
 // last inserted Id on success.
-func AddEstadoCumplido(m *EstadoCumplido) (id int64, err error) {
+func AddInformacionPago(m *InformacionPago) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetEstadoCumplidoteById retrieves EstadoCumplido by Id. Returns error if
+// GetInformacionPagoById retrieves InformacionPago by Id. Returns error if
 // Id doesn't exist
-func GetEstadoCumplidoById(id int) (v *EstadoCumplido, err error) {
+func GetInformacionPagoById(id int) (v *InformacionPago, err error) {
 	o := orm.NewOrm()
-	v = &EstadoCumplido{Id: id}
+	v = &InformacionPago{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllEstadoCumplido retrieves all EstadoCumplido matches certain condition. Returns empty list if
+// GetAllInformacionPago retrieves all InformacionPago matches certain condition. Returns empty list if
 // no records exist
-func GetAllEstadoCumplido(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllInformacionPago(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(EstadoCumplido)).RelatedSel()
+	qs := o.QueryTable(new(InformacionPago))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
-		} else if strings.HasSuffix(k, "in") {
-			arr := strings.Split(v, "|")
-			qs = qs.Filter(k, arr)
 		} else {
 			qs = qs.Filter(k, v)
 		}
@@ -102,7 +109,7 @@ func GetAllEstadoCumplido(query map[string]string, fields []string, sortby []str
 		}
 	}
 
-	var l []EstadoCumplido
+	var l []InformacionPago
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -125,11 +132,11 @@ func GetAllEstadoCumplido(query map[string]string, fields []string, sortby []str
 	return nil, err
 }
 
-// UpdateEstadoCumplido updates EstadoCumplidoby Id and returns error if
+// UpdateInformacionPago updates InformacionPago by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateEstadoCumplidoById(m *EstadoCumplido) (err error) {
+func UpdateInformacionPagoById(m *InformacionPago) (err error) {
 	o := orm.NewOrm()
-	v := EstadoCumplido{Id: m.Id}
+	v := InformacionPago{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -140,12 +147,11 @@ func UpdateEstadoCumplidoById(m *EstadoCumplido) (err error) {
 	return
 }
 
-// DeleteEstadoCumplido deletes EstadoCumplido by Id and returns error if
+// DeleteInformacionPago deletes InformacionPago by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteEstadoCumplido(id int) (err error) {
-	fmt.Println("si entro " , id)
+func DeleteInformacionPago(id int) (err error) {
 	o := orm.NewOrm()
-	v := EstadoCumplido{Id: id}
+	v := InformacionPago{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -156,5 +162,3 @@ func DeleteEstadoCumplido(id int) (err error) {
 	}
 	return
 }
-
-

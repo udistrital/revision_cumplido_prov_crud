@@ -5,62 +5,56 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type SoportePago struct {
-	Id                  int                `orm:"column(id);pk;auto"`
-	DocumentoId         int                `orm:"column(documento_id);null"`
-	CumplidoProveedorId *CumplidoProveedor `orm:"column(cumplido_proveedor_id);rel(fk)"`
-	FechaCreacion       time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
-	FechaModificacion   time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
-	Activo              bool               `orm:"column(activo);default(true);null"`
+type TipoPago struct {
+	Id                 int                `orm:"column(id);pk;auto"`
+	Nombre            string `orm:"column(nombre)"`
+	Descripcion       string `orm:"column(descripcion);null"`
+	CodigoAbreviacion string `orm:"column(codigo_abreviacion);null"`
+	Activo            bool   `orm:"column(activo);default(true);null"`
 }
-
-func (t *SoportePago) TableName() string {
-	return "soporte_pago"
+func (t *TipoPago) TableName() string {
+	return "tipo_pago"
 }
 
 func init() {
-	orm.RegisterModel(new(SoportePago))
+	orm.RegisterModel(new(TipoPago))
 }
 
-// AddSoportePago insert a new SoportePago into database and returns
+// AddTipoPago insert a new TipoPago into database and returns
 // last inserted Id on success.
-func AddSoportePago(m *SoportePago) (id int64, err error) {
+func AddTipoPago(m *TipoPago) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetSoportePagoById retrieves SoportePago by Id. Returns error if
+// GetTipoPagoById retrieves TipoPago by Id. Returns error if
 // Id doesn't exist
-func GetSoportePagoById(id int) (v *SoportePago, err error) {
+func GetTipoPagoById(id int) (v *TipoPago, err error) {
 	o := orm.NewOrm()
-	v = &SoportePago{Id: id}
+	v = &TipoPago{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllSoportePago retrieves all SoportePago matches certain condition. Returns empty list if
+// GetAllTipoPago retrieves all TipoPago matches certain condition. Returns empty list if
 // no records exist
-func GetAllSoportePago(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllTipoPago(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(SoportePago)).RelatedSel()
+	qs := o.QueryTable(new(TipoPago))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
-		} else if strings.HasSuffix(k, "in") {
-			arr := strings.Split(v, "|")
-			qs = qs.Filter(k, arr)
 		} else {
 			qs = qs.Filter(k, v)
 		}
@@ -104,7 +98,7 @@ func GetAllSoportePago(query map[string]string, fields []string, sortby []string
 		}
 	}
 
-	var l []SoportePago
+	var l []TipoPago
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -127,11 +121,11 @@ func GetAllSoportePago(query map[string]string, fields []string, sortby []string
 	return nil, err
 }
 
-// UpdateSoportePago updates SoportePago by Id and returns error if
+// UpdateTipoPago updates TipoPago by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateSoportePagoById(m *SoportePago) (err error) {
+func UpdateTipoPagoById(m *TipoPago) (err error) {
 	o := orm.NewOrm()
-	v := SoportePago{Id: m.Id}
+	v := TipoPago{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -142,11 +136,11 @@ func UpdateSoportePagoById(m *SoportePago) (err error) {
 	return
 }
 
-// DeleteSoportePago deletes SoportePago by Id and returns error if
+// DeleteTipoPago deletes TipoPago by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteSoportePago(id int) (err error) {
+func DeleteTipoPago(id int) (err error) {
 	o := orm.NewOrm()
-	v := SoportePago{Id: id}
+	v := TipoPago{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
