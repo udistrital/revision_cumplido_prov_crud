@@ -11,10 +11,10 @@ import (
 )
 
 type CumplidoProveedor struct {
-	Id                int      `orm:"column(id);pk;auto"`
+	Id                int       `orm:"column(id);pk;auto"`
 	NumeroContrato    string    `orm:"column(numero_contrato)"`
 	VigenciaContrato  int       `orm:"column(vigencia_contrato)"`
-	Activo            	   bool              	 `orm:"column(activo);default(true);null"`
+	Activo            bool      `orm:"column(activo);default(true)"`
 	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
 	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 }
@@ -31,6 +31,7 @@ func init() {
 // last inserted Id on success.
 func AddCumplidoProveedor(m *CumplidoProveedor) (id int64, err error) {
 	o := orm.NewOrm()
+	m.Activo = true
 	id, err = o.Insert(m)
 	return
 }

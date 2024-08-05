@@ -11,7 +11,7 @@ import (
 )
 
 type InformacionPago struct {
-	Id                 int                `orm:"column(id);pk;auto"`
+	Id                   int                `orm:"column(id);pk;auto"`
 	TipoPagoId           *TipoPago          `orm:"column(tipo_pago_id);rel(fk)"`
 	CumplidoProveedorId  *CumplidoProveedor `orm:"column(cumplido_proveedor_id);rel(fk)"`
 	TipoDocumentoCobroId int                `orm:"column(tipo_documento_cobro_id)"`
@@ -22,7 +22,7 @@ type InformacionPago struct {
 	NumeroFactura        string             `orm:"column(numero_factura)"`
 	ValorCumplido        float64            `orm:"column(valor_cumplido)"`
 	NumeroCuenta         string             `orm:"column(numero_cuenta)"`
-	Activo            	   bool              `orm:"column(activo);default(true);null"`
+	Activo               bool               `orm:"column(activo);default(true)"`
 	FechaCreacion        time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone)"`
 	FechaModificacion    time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 }
@@ -39,6 +39,7 @@ func init() {
 // last inserted Id on success.
 func AddInformacionPago(m *InformacionPago) (id int64, err error) {
 	o := orm.NewOrm()
+	m.Activo = true
 	id, err = o.Insert(m)
 	return
 }

@@ -14,7 +14,7 @@ type EstadoCumplido struct {
 	Nombre            string `orm:"column(nombre)"`
 	CodigoAbreviación string `orm:"column(codigo_abreviación);null"`
 	Descripcion       string `orm:"column(descripcion);null"`
-	Activo            	   bool              	 `orm:"column(activo);default(true);null"`
+	Activo            bool   `orm:"column(activo);null;default(true)"`
 }
 
 func (t *EstadoCumplido) TableName() string {
@@ -29,6 +29,7 @@ func init() {
 // last inserted Id on success.
 func AddEstadoCumplido(m *EstadoCumplido) (id int64, err error) {
 	o := orm.NewOrm()
+	m.Activo = true
 	id, err = o.Insert(m)
 	return
 }
@@ -143,7 +144,7 @@ func UpdateEstadoCumplidoById(m *EstadoCumplido) (err error) {
 // DeleteEstadoCumplido deletes EstadoCumplido by Id and returns error if
 // the record to be deleted doesn't exist
 func DeleteEstadoCumplido(id int) (err error) {
-	fmt.Println("si entro " , id)
+	fmt.Println("si entro ", id)
 	o := orm.NewOrm()
 	v := EstadoCumplido{Id: id}
 	// ascertain id exists in the database
@@ -156,5 +157,3 @@ func DeleteEstadoCumplido(id int) (err error) {
 	}
 	return
 }
-
-

@@ -10,12 +10,13 @@ import (
 )
 
 type TipoPago struct {
-	Id                 int                `orm:"column(id);pk;auto"`
+	Id                int    `orm:"column(id);pk;auto"`
 	Nombre            string `orm:"column(nombre)"`
 	Descripcion       string `orm:"column(descripcion);null"`
 	CodigoAbreviacion string `orm:"column(codigo_abreviacion);null"`
-	Activo            bool   `orm:"column(activo);default(true);null"`
+	Activo            bool   `orm:"column(activo);default(true)"`
 }
+
 func (t *TipoPago) TableName() string {
 	return "tipo_pago"
 }
@@ -28,6 +29,7 @@ func init() {
 // last inserted Id on success.
 func AddTipoPago(m *TipoPago) (id int64, err error) {
 	o := orm.NewOrm()
+	m.Activo = true
 	id, err = o.Insert(m)
 	return
 }

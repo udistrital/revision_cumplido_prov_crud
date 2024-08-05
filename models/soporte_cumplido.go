@@ -9,11 +9,12 @@ import (
 
 	"github.com/astaxie/beego/orm"
 )
+
 type SoporteCumplido struct {
 	Id                  int                `orm:"column(id);pk;auto"`
 	CumplidoProveedorId *CumplidoProveedor `orm:"column(cumplido_proveedor_id);rel(fk)"`
 	DocumentoId         int                `orm:"column(documento_id)"`
-	Activo            	   bool            `orm:"column(activo);default(true);null"`
+	Activo              bool               `orm:"column(activo);default(true)"`
 	FechaCreacion       time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
 	FechaModificacion   time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 }
@@ -30,6 +31,7 @@ func init() {
 // last inserted Id on success.
 func AddSoporteCumplido(m *SoporteCumplido) (id int64, err error) {
 	o := orm.NewOrm()
+	m.Activo = true
 	id, err = o.Insert(m)
 	return
 }

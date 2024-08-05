@@ -15,7 +15,7 @@ type ComentarioSoporte struct {
 	SoporteCumplidoId      *SoporteCumplido      `orm:"column(soporte_cumplido_id);rel(fk)"`
 	CambioEstadoCumplidoId *CambioEstadoCumplido `orm:"column(cambio_estado_cumplido_id);rel(fk)"`
 	Comentario             string                `orm:"column(comentario);null"`
-	Activo            	   bool              	 `orm:"column(activo);default(true);null"`
+	Activo                 bool                  `orm:"column(activo);default(true)"`
 	FechaCreacion          time.Time             `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
 	FechaModificacion      time.Time             `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 }
@@ -32,6 +32,7 @@ func init() {
 // last inserted Id on success.
 func AddComentarioSoporte(m *ComentarioSoporte) (id int64, err error) {
 	o := orm.NewOrm()
+	m.Activo = true
 	id, err = o.Insert(m)
 	return
 }
