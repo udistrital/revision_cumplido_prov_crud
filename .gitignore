@@ -20,3 +20,4 @@ swagger/lang/
 swagger/lib/
 revision_cumplidos_proveedores_crud
 .env
+.idea/
