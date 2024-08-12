@@ -1,22 +1,25 @@
 package main
 
 import (
-	_ "github.com/udistrital/revision_cumplidos_proveedores_crud/routers"
+	"net/url"
+
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/plugins/cors"
 	_ "github.com/lib/pq"
 	auditoria "github.com/udistrital/auditoria"
+	_ "github.com/udistrital/revision_cumplidos_proveedores_crud/routers"
 	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
 	"github.com/udistrital/utils_oas/customerrorv2"
 	"github.com/udistrital/utils_oas/xray"
 )
+
 func main() {
 	AllowedOrigins := []string{"*.udistrital.edu.co"}
 	orm.Debug = true
 	orm.RegisterDataBase("default", "postgres", "postgres://"+
 		beego.AppConfig.String("PGuser")+":"+
-		beego.AppConfig.String("PGpass")+"@"+
+		url.QueryEscape(beego.AppConfig.String("PGpass"))+"@"+
 		beego.AppConfig.String("PGhost")+":"+
 		beego.AppConfig.String("PGport")+"/"+
 		beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+
