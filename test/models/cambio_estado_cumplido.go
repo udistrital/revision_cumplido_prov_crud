@@ -15,7 +15,7 @@ type CambioEstadoCumplido struct {
 	EstadoCumplidoId     *EstadoCumplido    `orm:"column(estado_cumplido_id);rel(fk)"`
 	CumplidoProveedorId  *CumplidoProveedor `orm:"column(cumplido_proveedor_id);rel(fk)"`
 	DocumentoResponsable int                `orm:"column(documento_responsable)"`
-	CargoReponsable      string             `orm:"column(cargo_reponsable)"`
+	CargoResponsable      string             `orm:"column(cargo_responsable)"`
 	Activo               bool               `orm:"column(activo)"`
 	FechaCreacion        time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
 	FechaModificacion    time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
