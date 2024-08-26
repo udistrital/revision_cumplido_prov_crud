@@ -1235,7 +1235,7 @@
                 "Activo": {
                     "type": "boolean"
                 },
-                "CargoReponsable": {
+                "CargoResponsable": {
                     "type": "string"
                 },
                 "CumplidoProveedorId": {
@@ -1327,7 +1327,7 @@
                 "Activo": {
                     "type": "boolean"
                 },
-                "CodigoAbreviación": {
+                "CodigoAbreviacion": {
                     "type": "string"
                 },
                 "Descripcion": {
