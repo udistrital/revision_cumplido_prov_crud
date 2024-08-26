@@ -1327,7 +1327,7 @@
                 "Activo": {
                     "type": "boolean"
                 },
-                "CodigoAbreviación": {
+                "CodigoAbreviacion": {
                     "type": "string"
                 },
                 "Descripcion": {

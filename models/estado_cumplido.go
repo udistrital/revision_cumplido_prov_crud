@@ -12,7 +12,7 @@ import (
 type EstadoCumplido struct {
 	Id                int    `orm:"column(id);pk;auto"`
 	Nombre            string `orm:"column(nombre)"`
-	CodigoAbreviación string `orm:"column(codigo_abreviación);null"`
+	CodigoAbreviacion string `orm:"column(codigo_abreviacion);null"`
 	Descripcion       string `orm:"column(descripcion);null"`
 	Activo            bool   `orm:"column(activo);null;default(true)"`
 }
