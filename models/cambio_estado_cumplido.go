@@ -17,8 +17,8 @@ type CambioEstadoCumplido struct {
 	DocumentoResponsable int                `orm:"column(documento_responsable)"`
 	CargoResponsable      string             `orm:"column(cargo_responsable)"`
 	Activo               bool               `orm:"column(activo);default(true)"`
-	FechaCreacion        time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
-	FechaModificacion    time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	FechaCreacion        time.Time          `orm:"auto_now_add;column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion    time.Time          `orm:"auto_now;column(fecha_modificacion);type(timestamp without time zone);null"`
 }
 
 func (t *CambioEstadoCumplido) TableName() string {
