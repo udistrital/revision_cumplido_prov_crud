@@ -3,8 +3,10 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"strconv"
 	"strings"
+
 	"github.com/udistrital/revision_cumplidos_proveedores_crud/models"
 
 	"github.com/astaxie/beego"
@@ -127,6 +129,7 @@ func (c *EstadoCumplidoController) GetAll() {
 	}
 
 	l, err := models.GetAllEstadoCumplido(query, fields, sortby, order, offset, limit)
+	fmt.Println("estado cumplido", l)
 	if err != nil {
 		logs.Error(err)
 		c.Data["mesaage"] = "Error service GetAll: The request contains an incorrect parameter or no record exists"
@@ -178,7 +181,7 @@ func (c *EstadoCumplidoController) Put() {
 func (c *EstadoCumplidoController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	
+
 	if err := models.DeleteEstadoCumplido(id); err == nil {
 		d := map[string]interface{}{"Id": id}
 		c.Data["json"] = map[string]interface{}{"Success": true, "Status": "200", "Message": "Delete successful", "Data": d}

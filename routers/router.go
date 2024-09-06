@@ -56,7 +56,11 @@ func init() {
 				&controllers.TipoPagoController{},
 			),
 		),
-		
+		beego.NSNamespace("/crear_solicitud_cumplido",
+			beego.NSInclude(
+				&controllers.TrCrearSolicitudCumplidoController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
