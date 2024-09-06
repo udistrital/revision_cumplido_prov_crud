@@ -22,11 +22,14 @@ func CrearSolicitudCumplido(m *SolicitudCumplido) (err error) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	id_cumplido_proveedor, err := o.Insert(CumplidoProveedor{
-		NumeroContrato:   m.NumeroContrato,
-		VigenciaContrato: m.VigenciaContrato,
-		Activo:           true,
-	})
+	var cumplido_proveedor CumplidoProveedor
+
+	cumplido_proveedor.NumeroContrato = m.NumeroContrato
+	cumplido_proveedor.VigenciaContrato = m.VigenciaContrato
+	cumplido_proveedor.Activo = true
+
+	fmt.Println(cumplido_proveedor)
+	id_cumplido_proveedor, err := o.Insert(&cumplido_proveedor)
 
 	if err != nil {
 		o.Rollback()
