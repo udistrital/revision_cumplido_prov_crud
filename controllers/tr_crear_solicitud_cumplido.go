@@ -22,9 +22,9 @@ func (c *TrCrearSolicitudCumplidoController) URLMapping() {
 
 // Post ...
 // @Title Create
-// @Description create Tr_crear_solicitud_cumplido
-// @Param	body		body 	models.Tr_crear_solicitud_cumplido	true		"body for Tr_crear_solicitud_cumplido content"
-// @Success 201 {object} models.Tr_crear_solicitud_cumplido
+// @Description create SolicitudCumplido
+// @Param	body		body 	models.SolicitudCumplido		"body for SolicitudCumplido"
+// @Success 201 {object} models.SolicitudCumplido
 // @Failure 403 body is empty
 // @router / [post]
 func (c *TrCrearSolicitudCumplidoController) Post() {

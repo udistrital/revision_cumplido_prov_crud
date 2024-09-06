@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/astaxie/beego/orm"
-	"github.com/udistrital/revision_cumplidos_proveedores_crud/models"
 )
 
 type SolicitudCumplido struct {
@@ -27,12 +26,11 @@ func CrearSolicitudCumplido(m *SolicitudCumplido) (err error) {
 	// 	VigenciaContrato: SolicitudCumplido.VigenciaContrato,
 	// 	Activo:           true,
 	// })
-	if res, err := models.GetAllEstadoCumplido(map[string]string{"CodigoAbreviacion": "CD"}, []string{}, []string{}, []string{}, 0, 1); err == nil {
+	if res, err := GetAllEstadoCumplido(map[string]string{"codigo_abreviacion": "CD"}, []string{}, []string{}, []string{}, 0, 1); err == nil {
 		fmt.Println(res)
-		// o.Insert(models.CambioEstadoCumplido{
-		// 	EstadoCumplidoId: res[0],
-
-		// })
+		//o.Insert(CambioEstadoCumplido{
+		//	EstadoCumplidoId: res[0]["Id"].(int),
+		//})
 	}
 
 	err = o.Commit()

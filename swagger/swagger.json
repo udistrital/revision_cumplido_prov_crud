@@ -361,6 +361,36 @@
                 }
             }
         },
+        "/crear_solicitud_cumplido/": {
+            "post": {
+                "tags": [
+                    "crear_solicitud_cumplido"
+                ],
+                "description": "create SolicitudCumplido",
+                "operationId": "TrCrearSolicitudCumplidoController.Create",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for SolicitudCumplido",
+                        "schema": {
+                            "$ref": "#/definitions/models.SolicitudCumplido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SolicitudCumplido"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
         "/cumplido_proveedor/": {
             "get": {
                 "tags": [
@@ -1399,6 +1429,26 @@
                 }
             }
         },
+        "models.SolicitudCumplido": {
+            "title": "SolicitudCumplido",
+            "type": "object",
+            "properties": {
+                "CargoResponsable": {
+                    "type": "string"
+                },
+                "DocumentoResponsable": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "NumeroContrato": {
+                    "type": "string"
+                },
+                "VigenciaContrato": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
         "models.SoporteCumplido": {
             "title": "SoporteCumplido",
             "type": "object",
@@ -1478,6 +1528,10 @@
         {
             "name": "tipo_pago",
             "description": "TipoPagoController operations for TipoPago\n"
+        },
+        {
+            "name": "crear_solicitud_cumplido",
+            "description": "TrCrearSolicitudCumplidoController operations for Tr_crear_solicitud_cumplido\n"
         }
     ]
 }
