@@ -43,23 +43,20 @@ func CrearSolicitudCumplido(m *SolicitudCumplido) (err error) {
 		json.Unmarshal(b, &res[0])
 		ec := res[0].(map[string]interface{})
 		fmt.Println(ec)
-		_, err = o.Insert(
-			CambioEstadoCumplido{
-				EstadoCumplidoId: &EstadoCumplido{
-					Id: ec["Id"].(int),
-				},
-				CumplidoProveedorId: &CumplidoProveedor{
-					Id: int(id_cumplido_proveedor),
-				},
-				DocumentoResponsable: m.DocumentoResponsable,
-				CargoResponsable:     m.CargoResponsable,
-			})
-		if err != nil {
+		var cambio_estado_cumplido CambioEstadoCumplido
+
+		cambio_estado_cumplido.EstadoCumplidoId.Id = ec["Id"].(int)
+		cambio_estado_cumplido.CumplidoProveedorId.Id = int(id_cumplido_proveedor)
+		cambio_estado_cumplido.DocumentoResponsable = m.DocumentoResponsable
+		cambio_estado_cumplido.CargoResponsable = m.CargoResponsable
+		cambio_estado_cumplido.Activo = true
+		fmt.Println(cambio_estado_cumplido)
+
+		if _, err = o.Insert(&cambio_estado_cumplido); err != nil {
 			o.Rollback()
 		}
 	} else {
 		o.Rollback()
-
 	}
 
 	err = o.Commit()
