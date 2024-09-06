@@ -1,6 +1,7 @@
 package models
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/astaxie/beego/orm"
@@ -21,16 +22,41 @@ func CrearSolicitudCumplido(m *SolicitudCumplido) (err error) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	// _, err = o.Insert(CumplidoProveedor{
-	// 	NumeroContrato:   SolicitudCumplido.NumeroContrato,
-	// 	VigenciaContrato: SolicitudCumplido.VigenciaContrato,
-	// 	Activo:           true,
-	// })
+	id_cumplido_proveedor, err := o.Insert(CumplidoProveedor{
+		NumeroContrato:   m.NumeroContrato,
+		VigenciaContrato: m.VigenciaContrato,
+		Activo:           true,
+	})
+
+	if err != nil {
+		o.Rollback()
+		return
+	}
+
 	if res, err := GetAllEstadoCumplido(map[string]string{"codigo_abreviacion": "CD"}, []string{}, []string{}, []string{}, 0, 1); err == nil {
-		fmt.Println(res)
-		//o.Insert(CambioEstadoCumplido{
-		//	EstadoCumplidoId: res[0]["Id"].(int),
-		//})
+		//fmt.Println(res)
+		fmt.Println("interface", res[0])
+		b := []byte(`{"key":"value"}`)
+		json.Unmarshal(b, &res[0])
+		ec := res[0].(map[string]interface{})
+		fmt.Println(ec)
+		_, err = o.Insert(
+			CambioEstadoCumplido{
+				EstadoCumplidoId: &EstadoCumplido{
+					Id: ec["Id"].(int),
+				},
+				CumplidoProveedorId: &CumplidoProveedor{
+					Id: int(id_cumplido_proveedor),
+				},
+				DocumentoResponsable: m.DocumentoResponsable,
+				CargoResponsable:     m.CargoResponsable,
+			})
+		if err != nil {
+			o.Rollback()
+		}
+	} else {
+		o.Rollback()
+
 	}
 
 	err = o.Commit()
