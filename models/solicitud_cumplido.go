@@ -1,7 +1,6 @@
 package models
 
 import (
-	"encoding/json"
 	"fmt"
 
 	"github.com/astaxie/beego/orm"
@@ -37,15 +36,10 @@ func CrearSolicitudCumplido(m *SolicitudCumplido) (err error) {
 	}
 
 	if res, err := GetAllEstadoCumplido(map[string]string{"codigo_abreviacion": "CD"}, []string{}, []string{}, []string{}, 0, 1); err == nil {
-		//fmt.Println(res)
-		fmt.Println("interface", res[0])
-		b := []byte(`{"key":"value"}`)
-		json.Unmarshal(b, &res[0])
-		ec := res[0].(map[string]interface{})
-		fmt.Println(ec)
+
 		var cambio_estado_cumplido CambioEstadoCumplido
 
-		cambio_estado_cumplido.EstadoCumplidoId.Id = ec["Id"].(int)
+		cambio_estado_cumplido.EstadoCumplidoId.Id = res[0].(EstadoCumplido).Id
 		cambio_estado_cumplido.CumplidoProveedorId.Id = int(id_cumplido_proveedor)
 		cambio_estado_cumplido.DocumentoResponsable = m.DocumentoResponsable
 		cambio_estado_cumplido.CargoResponsable = m.CargoResponsable
