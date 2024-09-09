@@ -38,9 +38,12 @@ func CrearSolicitudCumplido(m *SolicitudCumplido) (err error) {
 	if res, err := GetAllEstadoCumplido(map[string]string{"codigo_abreviacion": "CD"}, []string{}, []string{}, []string{}, 0, 1); err == nil {
 
 		var cambio_estado_cumplido CambioEstadoCumplido
+		var estado_cumplido EstadoCumplido
+		estado_cumplido.Id = res[0].(EstadoCumplido).Id
+		cumplido_proveedor.Id = int(id_cumplido_proveedor)
 
-		cambio_estado_cumplido.EstadoCumplidoId.Id = res[0].(EstadoCumplido).Id
-		cambio_estado_cumplido.CumplidoProveedorId.Id = int(id_cumplido_proveedor)
+		cambio_estado_cumplido.EstadoCumplidoId = &estado_cumplido
+		cambio_estado_cumplido.CumplidoProveedorId = &cumplido_proveedor
 		cambio_estado_cumplido.DocumentoResponsable = m.DocumentoResponsable
 		cambio_estado_cumplido.CargoResponsable = m.CargoResponsable
 		cambio_estado_cumplido.Activo = true
