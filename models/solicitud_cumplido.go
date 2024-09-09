@@ -27,7 +27,6 @@ func CrearSolicitudCumplido(m *SolicitudCumplido) (err error) {
 	cumplido_proveedor.VigenciaContrato = m.VigenciaContrato
 	cumplido_proveedor.Activo = true
 
-	fmt.Println(cumplido_proveedor)
 	id_cumplido_proveedor, err := o.Insert(&cumplido_proveedor)
 
 	if err != nil {
@@ -47,7 +46,6 @@ func CrearSolicitudCumplido(m *SolicitudCumplido) (err error) {
 		cambio_estado_cumplido.DocumentoResponsable = m.DocumentoResponsable
 		cambio_estado_cumplido.CargoResponsable = m.CargoResponsable
 		cambio_estado_cumplido.Activo = true
-		fmt.Println(cambio_estado_cumplido)
 
 		if _, err = o.Insert(&cambio_estado_cumplido); err != nil {
 			o.Rollback()
