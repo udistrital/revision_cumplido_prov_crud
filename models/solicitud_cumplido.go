@@ -21,16 +21,37 @@ func CrearSolicitudCumplido(m *SolicitudCumplido) (err error) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	// _, err = o.Insert(CumplidoProveedor{
-	// 	NumeroContrato:   SolicitudCumplido.NumeroContrato,
-	// 	VigenciaContrato: SolicitudCumplido.VigenciaContrato,
-	// 	Activo:           true,
-	// })
+	var cumplido_proveedor CumplidoProveedor
+
+	cumplido_proveedor.NumeroContrato = m.NumeroContrato
+	cumplido_proveedor.VigenciaContrato = m.VigenciaContrato
+	cumplido_proveedor.Activo = true
+
+	id_cumplido_proveedor, err := o.Insert(&cumplido_proveedor)
+
+	if err != nil {
+		o.Rollback()
+		return
+	}
+
 	if res, err := GetAllEstadoCumplido(map[string]string{"codigo_abreviacion": "CD"}, []string{}, []string{}, []string{}, 0, 1); err == nil {
-		fmt.Println(res)
-		//o.Insert(CambioEstadoCumplido{
-		//	EstadoCumplidoId: res[0]["Id"].(int),
-		//})
+
+		var cambio_estado_cumplido CambioEstadoCumplido
+		var estado_cumplido EstadoCumplido
+		estado_cumplido.Id = res[0].(EstadoCumplido).Id
+		cumplido_proveedor.Id = int(id_cumplido_proveedor)
+
+		cambio_estado_cumplido.EstadoCumplidoId = &estado_cumplido
+		cambio_estado_cumplido.CumplidoProveedorId = &cumplido_proveedor
+		cambio_estado_cumplido.DocumentoResponsable = m.DocumentoResponsable
+		cambio_estado_cumplido.CargoResponsable = m.CargoResponsable
+		cambio_estado_cumplido.Activo = true
+
+		if _, err = o.Insert(&cambio_estado_cumplido); err != nil {
+			o.Rollback()
+		}
+	} else {
+		o.Rollback()
 	}
 
 	err = o.Commit()
