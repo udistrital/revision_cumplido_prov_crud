@@ -19,5 +19,7 @@ swagger/images/
 swagger/lang/
 swagger/lib/
 revision_cumplidos_proveedores_crud
+revision_cumplidos_prov_crud
+revision_cumplidos_prov_crud.exe
 .env
 .idea/

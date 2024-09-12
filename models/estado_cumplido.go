@@ -121,6 +121,7 @@ func GetAllEstadoCumplido(query map[string]string, fields []string, sortby []str
 				ml = append(ml, m)
 			}
 		}
+		//fmt.Println(ml)
 		return ml, nil
 	}
 	return nil, err
