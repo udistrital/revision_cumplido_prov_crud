@@ -7,9 +7,9 @@ import (
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/plugins/cors"
 	_ "github.com/lib/pq"
-	auditoria "github.com/udistrital/auditoria"
 	_ "github.com/udistrital/revision_cumplidos_proveedores_crud/routers"
 	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
+	auditoria "github.com/udistrital/utils_oas/auditoria"
 	"github.com/udistrital/utils_oas/customerrorv2"
 	"github.com/udistrital/utils_oas/xray"
 )
