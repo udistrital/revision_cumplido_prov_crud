@@ -1,0 +1,1537 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "beego Test API",
+        "description": "beego has a very cool tools to autogenerate documents for your API",
+        "version": "1.0.0",
+        "termsOfService": "http://beego.me/",
+        "contact": {
+            "email": "astaxie@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "basePath": "/v1",
+    "paths": {
+        "/cambio_estado_cumplido/": {
+            "get": {
+                "tags": [
+                    "cambio_estado_cumplido"
+                ],
+                "description": "get CambioEstadoCumplido",
+                "operationId": "CambioEstadoCumplidoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CambioEstadoCumplido"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "cambio_estado_cumplido"
+                ],
+                "description": "create CambioEstadoCumplido",
+                "operationId": "CambioEstadoCumplidoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for CambioEstadoCumplido content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CambioEstadoCumplido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.CambioEstadoCumplido"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/cambio_estado_cumplido/{id}": {
+            "get": {
+                "tags": [
+                    "cambio_estado_cumplido"
+                ],
+                "description": "get CambioEstadoCumplido by id",
+                "operationId": "CambioEstadoCumplidoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CambioEstadoCumplido"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "cambio_estado_cumplido"
+                ],
+                "description": "update the CambioEstadoCumplido",
+                "operationId": "CambioEstadoCumplidoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for CambioEstadoCumplido content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CambioEstadoCumplido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CambioEstadoCumplido"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "cambio_estado_cumplido"
+                ],
+                "description": "delete the CambioEstadoCumplido",
+                "operationId": "CambioEstadoCumplidoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/comentario_soporte/": {
+            "get": {
+                "tags": [
+                    "comentario_soporte"
+                ],
+                "description": "get ComentarioSoporte",
+                "operationId": "ComentarioSoporteController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ComentarioSoporte"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "comentario_soporte"
+                ],
+                "description": "create ComentarioSoporte",
+                "operationId": "ComentarioSoporteController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ComentarioSoporte content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ComentarioSoporte"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.ComentarioSoporte"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/comentario_soporte/{id}": {
+            "get": {
+                "tags": [
+                    "comentario_soporte"
+                ],
+                "description": "get ComentarioSoporte by id",
+                "operationId": "ComentarioSoporteController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ComentarioSoporte"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "comentario_soporte"
+                ],
+                "description": "update the ComentarioSoporte",
+                "operationId": "ComentarioSoporteController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ComentarioSoporte content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ComentarioSoporte"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ComentarioSoporte"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "comentario_soporte"
+                ],
+                "description": "delete the ComentarioSoporte",
+                "operationId": "ComentarioSoporteController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/crear_solicitud_cumplido/": {
+            "post": {
+                "tags": [
+                    "crear_solicitud_cumplido"
+                ],
+                "description": "create SolicitudCumplido",
+                "operationId": "TrCrearSolicitudCumplidoController.Create",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for SolicitudCumplido",
+                        "schema": {
+                            "$ref": "#/definitions/models.SolicitudCumplido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SolicitudCumplido"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/cumplido_proveedor/": {
+            "get": {
+                "tags": [
+                    "cumplido_proveedor"
+                ],
+                "description": "get CumplidoProveedor",
+                "operationId": "CumplidoProveedorController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CumplidoProveedor"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "cumplido_proveedor"
+                ],
+                "description": "create CumplidoProveedor",
+                "operationId": "CumplidoProveedorController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for CumplidoProveedor content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CumplidoProveedor"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.CumplidoProveedor"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/cumplido_proveedor/{id}": {
+            "get": {
+                "tags": [
+                    "cumplido_proveedor"
+                ],
+                "description": "get CumplidoProveedor by id",
+                "operationId": "CumplidoProveedorController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CumplidoProveedor"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "cumplido_proveedor"
+                ],
+                "description": "update the CumplidoProveedor",
+                "operationId": "CumplidoProveedorController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for CumplidoProveedor content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CumplidoProveedor"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CumplidoProveedor"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "cumplido_proveedor"
+                ],
+                "description": "delete the CumplidoProveedor",
+                "operationId": "CumplidoProveedorController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/estado_cumplido/": {
+            "get": {
+                "tags": [
+                    "estado_cumplido"
+                ],
+                "description": "get EstadoCumplido",
+                "operationId": "EstadoCumplidoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.EstadoCumplido"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "estado_cumplido"
+                ],
+                "description": "create EstadoCumplido",
+                "operationId": "EstadoCumplidoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for EstadoCumplido content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.EstadoCumplido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.EstadoCumplido"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/estado_cumplido/{id}": {
+            "get": {
+                "tags": [
+                    "estado_cumplido"
+                ],
+                "description": "get EstadoCumplido by id",
+                "operationId": "EstadoCumplidoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.EstadoCumplido"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "estado_cumplido"
+                ],
+                "description": "update the EstadoCumplido",
+                "operationId": "EstadoCumplidoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for EstadoCumplido content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.EstadoCumplido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.EstadoCumplido"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "estado_cumplido"
+                ],
+                "description": "delete the EstadoCumplido",
+                "operationId": "EstadoCumplidoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/informacion_pago/": {
+            "get": {
+                "tags": [
+                    "informacion_pago"
+                ],
+                "description": "get InformacionPago",
+                "operationId": "InformacionPagoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.InformacionPago"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "informacion_pago"
+                ],
+                "description": "create InformacionPago",
+                "operationId": "InformacionPagoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for InformacionPago content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.InformacionPago"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.InformacionPago"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/informacion_pago/{id}": {
+            "get": {
+                "tags": [
+                    "informacion_pago"
+                ],
+                "description": "get InformacionPago by id",
+                "operationId": "InformacionPagoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.InformacionPago"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "informacion_pago"
+                ],
+                "description": "update the InformacionPago",
+                "operationId": "InformacionPagoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for InformacionPago content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.InformacionPago"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.InformacionPago"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "informacion_pago"
+                ],
+                "description": "delete the InformacionPago",
+                "operationId": "InformacionPagoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/soporte_cumplido/": {
+            "get": {
+                "tags": [
+                    "soporte_cumplido"
+                ],
+                "description": "get SoporteCumplido",
+                "operationId": "SoporteCumplidoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SoporteCumplido"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "soporte_cumplido"
+                ],
+                "description": "create SoporteCumplido",
+                "operationId": "SoporteCumplidoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for SoporteCumplido content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.SoporteCumplido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.SoporteCumplido"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/soporte_cumplido/{id}": {
+            "get": {
+                "tags": [
+                    "soporte_cumplido"
+                ],
+                "description": "get SoporteCumplido by id",
+                "operationId": "SoporteCumplidoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SoporteCumplido"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "soporte_cumplido"
+                ],
+                "description": "update the SoporteCumplido",
+                "operationId": "SoporteCumplidoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for SoporteCumplido content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.SoporteCumplido"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SoporteCumplido"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "soporte_cumplido"
+                ],
+                "description": "delete the SoporteCumplido",
+                "operationId": "SoporteCumplidoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/tipo_pago/": {
+            "get": {
+                "tags": [
+                    "tipo_pago"
+                ],
+                "description": "get TipoPago",
+                "operationId": "TipoPagoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPago"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tipo_pago"
+                ],
+                "description": "create TipoPago",
+                "operationId": "TipoPagoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoPago content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPago"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TipoPago"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/tipo_pago/{id}": {
+            "get": {
+                "tags": [
+                    "tipo_pago"
+                ],
+                "description": "get TipoPago by id",
+                "operationId": "TipoPagoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPago"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "tipo_pago"
+                ],
+                "description": "update the TipoPago",
+                "operationId": "TipoPagoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoPago content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPago"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoPago"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tipo_pago"
+                ],
+                "description": "delete the TipoPago",
+                "operationId": "TipoPagoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.CambioEstadoCumplido": {
+            "title": "CambioEstadoCumplido",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CargoResponsable": {
+                    "type": "string"
+                },
+                "CumplidoProveedorId": {
+                    "$ref": "#/definitions/models.CumplidoProveedor"
+                },
+                "DocumentoResponsable": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "EstadoCumplidoId": {
+                    "$ref": "#/definitions/models.EstadoCumplido"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.ComentarioSoporte": {
+            "title": "ComentarioSoporte",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CambioEstadoCumplidoId": {
+                    "$ref": "#/definitions/models.CambioEstadoCumplido"
+                },
+                "Comentario": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "SoporteCumplidoId": {
+                    "$ref": "#/definitions/models.SoporteCumplido"
+                }
+            }
+        },
+        "models.CumplidoProveedor": {
+            "title": "CumplidoProveedor",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "NumeroContrato": {
+                    "type": "string"
+                },
+                "VigenciaContrato": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.EstadoCumplido": {
+            "title": "EstadoCumplido",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.InformacionPago": {
+            "title": "InformacionPago",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "BancoId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CumplidoProveedorId": {
+                    "$ref": "#/definitions/models.CumplidoProveedor"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaFinal": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaInicial": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "NumeroCuenta": {
+                    "type": "string"
+                },
+                "NumeroFactura": {
+                    "type": "string"
+                },
+                "TipoCuentaBancariaId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "TipoDocumentoCobroId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "TipoPagoId": {
+                    "$ref": "#/definitions/models.TipoPago"
+                },
+                "ValorCumplido": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.SolicitudCumplido": {
+            "title": "SolicitudCumplido",
+            "type": "object",
+            "properties": {
+                "CargoResponsable": {
+                    "type": "string"
+                },
+                "DocumentoResponsable": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "NumeroContrato": {
+                    "type": "string"
+                },
+                "VigenciaContrato": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.SoporteCumplido": {
+            "title": "SoporteCumplido",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CumplidoProveedorId": {
+                    "$ref": "#/definitions/models.CumplidoProveedor"
+                },
+                "DocumentoId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.TipoPago": {
+            "title": "TipoPago",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "cumplido_proveedor",
+            "description": "CumplidoProveedorController operations for CumplidoProveedor\n"
+        },
+        {
+            "name": "soporte_cumplido",
+            "description": "SoporteCumplidoController operations for SoporteCumplido\n"
+        },
+        {
+            "name": "cambio_estado_cumplido",
+            "description": "CambioEstadoCumplidoController operations for CambioEstadoCumplido\n"
+        },
+        {
+            "name": "estado_cumplido",
+            "description": "EstadoCumplidoController operations for EstadoCumplido\n"
+        },
+        {
+            "name": "comentario_soporte",
+            "description": "ComentarioSoporteController operations for ComentarioSoporte\n"
+        },
+        {
+            "name": "informacion_pago",
+            "description": "InformacionPagoController operations for InformacionPago\n"
+        },
+        {
+            "name": "tipo_pago",
+            "description": "TipoPagoController operations for TipoPago\n"
+        },
+        {
+            "name": "crear_solicitud_cumplido",
+            "description": "TrCrearSolicitudCumplidoController operations for Tr_crear_solicitud_cumplido\n"
+        }
+    ]
+}

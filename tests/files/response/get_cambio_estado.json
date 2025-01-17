@@ -1,0 +1,237 @@
+{
+  "Data": [
+    {
+      "Id": 103,
+      "EstadoCumplidoId": {
+        "Id": 4,
+        "Nombre": "Rechazado contratación",
+        "CodigoAbreviacion": "RC",
+        "Descripcion": "Proceso rechazado por supervisor",
+        "Activo": true
+      },
+      "CumplidoProveedorId": {
+        "Id": 45,
+        "NumeroContrato": "1051",
+        "VigenciaContrato": 2024,
+        "Activo": true,
+        "FechaCreacion": "2024-08-29T13:23:46.795-05:00",
+        "FechaModificacion": "2024-08-29T13:23:46.795-05:00"
+      },
+      "DocumentoResponsable": 0,
+      "CargoResponsable": "",
+      "Activo": false,
+      "FechaCreacion": "2024-08-30T01:09:13.585366-05:00",
+      "FechaModificacion": "2024-08-30T06:15:50.827104-05:00"
+    },
+    {
+      "Id": 104,
+      "EstadoCumplidoId": {
+        "Id": 4,
+        "Nombre": "Rechazado contratación",
+        "CodigoAbreviacion": "RC",
+        "Descripcion": "Proceso rechazado por supervisor",
+        "Activo": true
+      },
+      "CumplidoProveedorId": {
+        "Id": 46,
+        "NumeroContrato": "1051",
+        "VigenciaContrato": 2024,
+        "Activo": true,
+        "FechaCreacion": "2024-08-30T02:34:47.25-05:00",
+        "FechaModificacion": "2024-08-30T02:34:47.25-05:00"
+      },
+      "DocumentoResponsable": 0,
+      "CargoResponsable": "",
+      "Activo": false,
+      "FechaCreacion": "2024-08-30T01:09:24.466589-05:00",
+      "FechaModificacion": "2024-08-30T06:16:10.160683-05:00"
+    },
+    {
+      "Id": 95,
+      "EstadoCumplidoId": {
+        "Id": 3,
+        "Nombre": "Pendiente revisión contratación",
+        "CodigoAbreviacion": "PRC",
+        "Descripcion": "Proceso de carga de revision de contratacion",
+        "Activo": true
+      },
+      "CumplidoProveedorId": {
+        "Id": 51,
+        "NumeroContrato": "399",
+        "VigenciaContrato": 2024,
+        "Activo": true,
+        "FechaCreacion": "2024-08-30T05:15:14.565-05:00",
+        "FechaModificacion": "2024-08-30T05:15:14.565-05:00"
+      },
+      "DocumentoResponsable": 0,
+      "CargoResponsable": "",
+      "Activo": false,
+      "FechaCreacion": "2024-08-30T00:15:17.049997-05:00",
+      "FechaModificacion": "2024-08-30T06:26:04.746964-05:00"
+    },
+    {
+      "Id": 107,
+      "EstadoCumplidoId": {
+        "Id": 4,
+        "Nombre": "Rechazado contratación",
+        "CodigoAbreviacion": "RC",
+        "Descripcion": "Proceso rechazado por supervisor",
+        "Activo": true
+      },
+      "CumplidoProveedorId": {
+        "Id": 51,
+        "NumeroContrato": "399",
+        "VigenciaContrato": 2024,
+        "Activo": true,
+        "FechaCreacion": "2024-08-30T05:15:14.565-05:00",
+        "FechaModificacion": "2024-08-30T05:15:14.565-05:00"
+      },
+      "DocumentoResponsable": 0,
+      "CargoResponsable": "",
+      "Activo": true,
+      "FechaCreacion": "2024-08-30T06:26:04.763981-05:00",
+      "FechaModificacion": "2024-08-30T06:26:04.763981-05:00"
+    },
+    {
+      "Id": 5,
+      "EstadoCumplidoId": {
+        "Id": 6,
+        "Nombre": "Aprobado ordenador",
+        "CodigoAbreviacion": "AO",
+        "Descripcion": "Proceso Pendiente_Revisión_Ordenador",
+        "Activo": true
+      },
+      "CumplidoProveedorId": {
+        "Id": 1,
+        "NumeroContrato": "10660",
+        "VigenciaContrato": 2024,
+        "Activo": true,
+        "FechaCreacion": "0001-01-01T00:00:00Z",
+        "FechaModificacion": "0001-01-01T00:00:00Z"
+      },
+      "DocumentoResponsable": 52622477,
+      "CargoResponsable": "Supervisor",
+      "Activo": true,
+      "FechaCreacion": "2024-07-25T08:45:58.760198-05:00",
+      "FechaModificacion": "2024-08-11T06:10:59.529264-05:00"
+    },
+    {
+      "Id": 105,
+      "EstadoCumplidoId": {
+        "Id": 3,
+        "Nombre": "Pendiente revisión contratación",
+        "CodigoAbreviacion": "PRC",
+        "Descripcion": "Proceso de carga de revision de contratacion",
+        "Activo": true
+      },
+      "CumplidoProveedorId": {
+        "Id": 45,
+        "NumeroContrato": "1051",
+        "VigenciaContrato": 2024,
+        "Activo": true,
+        "FechaCreacion": "2024-08-29T13:23:46.795-05:00",
+        "FechaModificacion": "2024-08-29T13:23:46.795-05:00"
+      },
+      "DocumentoResponsable": 0,
+      "CargoResponsable": "",
+      "Activo": false,
+      "FechaCreacion": "2024-08-30T01:15:50.834652-05:00",
+      "FechaModificacion": "2024-08-30T06:30:41.670478-05:00"
+    },
+    {
+      "Id": 108,
+      "EstadoCumplidoId": {
+        "Id": 4,
+        "Nombre": "Rechazado contratación",
+        "CodigoAbreviacion": "RC",
+        "Descripcion": "Proceso rechazado por supervisor",
+        "Activo": true
+      },
+      "CumplidoProveedorId": {
+        "Id": 45,
+        "NumeroContrato": "1051",
+        "VigenciaContrato": 2024,
+        "Activo": true,
+        "FechaCreacion": "2024-08-29T13:23:46.795-05:00",
+        "FechaModificacion": "2024-08-29T13:23:46.795-05:00"
+      },
+      "DocumentoResponsable": 0,
+      "CargoResponsable": "",
+      "Activo": true,
+      "FechaCreacion": "2024-08-30T06:30:41.686779-05:00",
+      "FechaModificacion": "2024-08-30T06:30:41.686779-05:00"
+    },
+    {
+      "Id": 106,
+      "EstadoCumplidoId": {
+        "Id": 3,
+        "Nombre": "Pendiente revisión contratación",
+        "CodigoAbreviacion": "PRC",
+        "Descripcion": "Proceso de carga de revision de contratacion",
+        "Activo": true
+      },
+      "CumplidoProveedorId": {
+        "Id": 46,
+        "NumeroContrato": "1051",
+        "VigenciaContrato": 2024,
+        "Activo": true,
+        "FechaCreacion": "2024-08-30T02:34:47.25-05:00",
+        "FechaModificacion": "2024-08-30T02:34:47.25-05:00"
+      },
+      "DocumentoResponsable": 0,
+      "CargoResponsable": "",
+      "Activo": false,
+      "FechaCreacion": "2024-08-30T01:16:10.175955-05:00",
+      "FechaModificacion": "2024-08-30T06:36:51.450204-05:00"
+    },
+    {
+      "Id": 42,
+      "EstadoCumplidoId": {
+        "Id": 1,
+        "Nombre": "Cargando documentos",
+        "CodigoAbreviacion": "CD",
+        "Descripcion": "Proceso de carga de documentos",
+        "Activo": true
+      },
+      "CumplidoProveedorId": {
+        "Id": 5,
+        "NumeroContrato": "1171",
+        "VigenciaContrato": 2024,
+        "Activo": true,
+        "FechaCreacion": "2024-08-17T08:01:19.649-05:00",
+        "FechaModificacion": "2024-08-17T08:01:19.649-05:00"
+      },
+      "DocumentoResponsable": 79777053,
+      "CargoResponsable": "Supervisor",
+      "Activo": true,
+      "FechaCreacion": "2024-08-17T08:01:21.006387-05:00",
+      "FechaModificacion": "2024-08-17T08:01:21.006387-05:00"
+    },
+    {
+      "Id": 44,
+      "EstadoCumplidoId": {
+        "Id": 1,
+        "Nombre": "Cargando documentos",
+        "CodigoAbreviacion": "CD",
+        "Descripcion": "Proceso de carga de documentos",
+        "Activo": true
+      },
+      "CumplidoProveedorId": {
+        "Id": 7,
+        "NumeroContrato": "2005",
+        "VigenciaContrato": 2023,
+        "Activo": true,
+        "FechaCreacion": "2024-08-17T09:21:36.151-05:00",
+        "FechaModificacion": "2024-08-17T09:21:36.151-05:00"
+      },
+      "DocumentoResponsable": 79777053,
+      "CargoResponsable": "Supervisor",
+      "Activo": true,
+      "FechaCreacion": "2024-08-17T09:21:44.491638-05:00",
+      "FechaModificacion": "2024-08-17T09:21:44.491638-05:00"
+    }
+  ],
+  "Message": "Request successful",
+  "Status": "200",
+  "Success": true
+}
